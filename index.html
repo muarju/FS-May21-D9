@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <!--
+        BINGO CHALLENGE!!!
+        Create programmatically (with JS) a BINGO board with 76 cells, from 1 to 76.
+        Create a button to randomize a number from 1 to 76. The same number should be highlighted on the bingo board
+
+        EXTRA: 
+        - Take ALWAYS a new number (eg. avoid randoming the number 10 3 times)
+        - Create a USER BOARD with 24 randomized numbers that highlights as the main board does
+        - Let the user choose HOW MANY user boards he's willing to play with and create them.
+    -->
+  <head>
+      <title>Bingo Board</title>
+    <style>
+        body{background: black;}
+        h1{
+            text-align: center;
+            color: limegreen;
+        }
+        .container{width: 555px;
+                  margin: 5px auto;}
+        #board{border: 2px solid white;}
+        .cell{ display: inline-block;
+        width: 4%;
+        color: white;
+        background: gray;
+        border:1px solid;
+        margin: 5px;
+        padding: 8px;}
+        button{padding: 10px 8px;
+        margin: 10px;
+        }
+        .randomNumber{display: inline;
+            font-size: 40px;
+            color: red;}
+    </style>
+  </head>
+  <body>
+      <div class="container">
+      <h1>Welcome to Bingo Board</h1>
+      <button type="button" onclick="randomMe()">Random Me</button>
+      <div class="randomNumber"></div>
+      <div id="board"></div>
+
+      </div>
+
+
+    <script type="text/javascript">
+        window.onload=function(){
+            createCells()
+        }
+        function randomMe(){
+
+        }
+        function createCells() {
+            let board=document.getElementById("board")
+            for(let i=1; i<=76;i++){
+                let cell=  document.createElement("div")
+                cell.classList.add("cell")
+                cell.innerHTML=i
+                board.appendChild(cell)
+            }
+        }
+        function randomMe(){
+            let random=Math.floor(Math.random()*77)
+            let randomDiv=document.querySelector('.randomNumber')
+            randomDiv.innerHTML=random
+            let selectCell= document.querySelectorAll('.cell')
+            let indexOfCell= random-1
+            selectCell[indexOfCell].style.backgroundColor = "red"; 
+            
+
+
+        }
+    </script>
+    </body>
+</html>
